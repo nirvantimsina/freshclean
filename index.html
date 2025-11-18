@@ -102,14 +102,14 @@
                       </div>
                     </div> -->
                     <a href="#" class="btn">Get A Quote</a>
-                      <a
-                        class="whatsapp-button nav-item"
-                        style="margin-left: 10px;"
-                        href="https://wa.me/61493597634?text=Hello%2C%20I%20want%20to%20get%20a%20cleaning%20quote."
-                        target="_blank"
+                    <a
+                      class="whatsapp-button nav-item"
+                      style="margin-left: 10px"
+                      href="https://wa.me/61493597634?text=Hello%2C%20I%20want%20to%20get%20a%20cleaning%20quote."
+                      target="_blank"
                       ><i class="fab fa-whatsapp"></i>
-                         WhatsApp Us
-                      </a>
+                      WhatsApp Us
+                    </a>
                   </div>
                 </div>
               </div>
@@ -131,41 +131,56 @@
                     class="form-control"
                     type="text"
                     placeholder="Your Name"
+                    name="name"
+                    required
                   />
                   <input
                     class="form-control"
                     type="text"
                     placeholder="Mobile Number"
+                    name="phone"
+                    required
                   />
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Email"
-                  />
+                  <input class="form-control" type="text" placeholder="Email" name="email" />
                   <div class="control-group">
-                    <select class="custom-select">
-                      <option selected>Choose a service</option>
-                      <option value="1">End of Lease/Bond Cleaning</option>
-                      <option value="2">Carpet Cleaning</option>
-                      <option value="3">Office/Commercial Cleaning</option>
-                      <option value="4">House Cleaning</option>
-                      <option value="5">Airbnb/Hotels Cleaning</option>
-                      <option value="6">Residential Cleaning</option>
-                      <option value="7">Restaurant/Bar Cleaning</option>
-                      <option value="8">Move In/Move Out Cleaning</option>
-                      <option value="9">Instant Cleaning(Oven, Fridge, Walls, Blinds, Mattress etc.)</option>
-                      <option value="10">Window/Glass Cleaning</option>
-                      <option value="11">Garage/ Outdoor/ Balcony Cleaning</option>
-                      <option value="12">Move In/Move Out Cleaning</option>
-                      <option value="13">Others</option>
+                    <select name="service" class="custom-select">
+                      <option value="" selected disabled>Choose a service</option>
+                      <option value="end of lease">End of Lease/Bond Cleaning</option>
+                      <option value="carpet cleaning">Carpet Cleaning</option>
+                      <option value="office/commercial cleaning">Office/Commercial Cleaning</option>
+                      <option value="house cleaning">House Cleaning</option>
+                      <option value="airbnb/hotel cleaning">Airbnb/Hotels Cleaning</option>
+                      <option value="residential cleaning">Residential Cleaning</option>
+                      <option value="restaurant/bar cleaning">Restaurant/Bar Cleaning</option>
+                      <option value="move in/move out cleaning">Move In/Move Out Cleaning</option>
+                      <option value="instant cleaning">
+                        Instant Cleaning(Oven, Fridge, Walls, Blinds, Mattress
+                        etc.)
+                      </option>
+                      <option value="window/glass cleaning">Window/Glass Cleaning</option>
+                      <option value="garage/outdoor/balcony cleaning">
+                        Garage/ Outdoor/ Balcony Cleaning
+                      </option>
+                      <option value="others">Others</option>
                     </select>
                   </div>
+                  <div class="control-group">
+                    <select name="frequency" class="custom-select">
+                      <option value="" selected disabled>Choose the Frequency</option>
+                      <option value="one-off">One Time Cleaning</option>
+                      <option value="weekly">Weekly Cleaning</option>
+                      <option value="fortnightly">Fortnightly Cleaning</option>
+                      <option value="monthly">Monthly Cleaning</option>
+                      </select>
+                      </div>
                   <textarea
                     class="form-control"
-                    placeholder="Comment"
+                    placeholder="Message"
+                    name="message"
                   ></textarea>
                   <button class="btn btn-block">Get A Quote</button>
                 </form>
+                <p id="responseMessage"></p>
               </div>
             </div>
           </div>
@@ -704,11 +719,9 @@
             <div class="col-md-6 col-lg-3">
               <div class="footer-contact">
                 <h2>Get In Touch</h2>
-                <p>
-                  <i class="fa fa-map-marker-alt"></i>Sydney, Australia
-                </p>
-                <p><i class="fa fa-phone-alt"></i>0493 597 634 </p>
-                <p><i class="fa fa-envelope"></i>freshcleansydney@gmail.com </p>
+                <p><i class="fa fa-map-marker-alt"></i>Sydney, Australia</p>
+                <p><i class="fa fa-phone-alt"></i>0493 597 634</p>
+                <p><i class="fa fa-envelope"></i>freshcleansydney@gmail.com</p>
                 <div class="footer-social">
                   <a href=""><i class="fab fa-facebook-f"></i></a>
                   <a href=""><i class="fab fa-instagram"></i></a>
@@ -739,7 +752,8 @@
               <div class="footer-form">
                 <h2>Stay Updated</h2>
                 <p>
-                  Subscribe to the newsletter to stay updated on our latest news and exciting discounts, only for you.
+                  Subscribe to the newsletter to stay updated on our latest news
+                  and exciting discounts, only for you.
                 </p>
                 <input class="form-control" placeholder="Email here" />
                 <button class="btn">Submit</button>
@@ -759,7 +773,11 @@
         <div class="container copyright">
           <div class="row">
             <div class="col-md-6">
-              <p>&copy; <a href="https://github.com/nirvantimsina">Nirvan Timsina</a>, All Right Reserved.</p>
+              <p>
+                &copy;
+                <a href="https://github.com/nirvantimsina">Nirvan Timsina</a>,
+                All Right Reserved.
+              </p>
             </div>
           </div>
         </div>
@@ -780,4 +798,28 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
   </body>
+  <script>
+    document
+      .getElementById("quoteForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch("https://script.google.com/macros/s/AKfycbx-vDSwtzpEoIdSnLUV0lB2tT9NtvTUewYsK8yb-0raht94OE4NM1sSviOVSvUWgg-L/exec", {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            document.getElementById("responseMessage").innerHTML =
+              "Thank you! Your request has been submitted.";
+          })
+          .catch((error) => {
+            document.getElementById("responseMessage").innerHTML =
+              "Error submitting the form.";
+          });
+      });
+  </script>
 </html>
