@@ -277,7 +277,7 @@
               </div>
               <div class="price-footer">
                 <div class="price-action">
-                  <a href=""><i class="fa fa-shopping-cart"></i>Book Now</a>
+                  <a href="#" class="book-now" data-service="Standard"><i class="fa fa-shopping-cart"></i>Book Now</a>
                 </div>
               </div>
             </div>
@@ -308,7 +308,7 @@
               </div>
               <div class="price-footer">
                 <div class="price-action">
-                  <a href=""><i class="fa fa-shopping-cart"></i>Book Now</a>
+                  <a href="#" class="book-now" data-service="Premium"><i class="fa fa-shopping-cart"></i>Book Now</a>
                 </div>
               </div>
             </div>
@@ -339,7 +339,7 @@
               </div>
               <div class="price-footer">
                 <div class="price-action">
-                  <a href=""><i class="fa fa-shopping-cart"></i>Book Now</a>
+                  <a href="#" class="book-now" data-service="Enterprise"><i class="fa fa-shopping-cart"></i>Book Now</a>
                 </div>
               </div>
             </div>
@@ -463,6 +463,108 @@
     }
     attachNewsletter('newsletter-email', 'newsletter-input');
     attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
+    </script>
+
+    <!-- Add modal markup (once near end of body) -->
+    <!-- filepath: /home/nirvan/Desktop/Code/freshclean/service.html -->
+    <div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form id="bookNowForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookNowModalLabel">Request a Booking — <span id="bn-service-text"></span></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="bn-service" name="service" />
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="bn-email" name="email" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" class="form-control" id="bn-phone" name="phone" placeholder="+614xxxxxxxx" />
+              </div>
+              <p id="bn-response" style="margin-top:8px;"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="bn-submit" type="submit" class="btn btn-primary">Send Request</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Append script -->
+    <script>
+      // filepath: /home/nirvan/Desktop/Code/freshclean/service.html
+      (function(){
+        const BOOK_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOcu8VqKWiMJIC7Fy8w6auAELgr05IJDRynljNVECmTB9MFvma9v--vg4IFs1pgKHXAg/exec';
+        function isValidEmail(e){ return /\S+@\S+\.\S+/.test(e); }
+        function isNonEmpty(s){ return s && s.trim().length>0; }
+
+        document.querySelectorAll('.book-now').forEach(btn=>{
+          btn.addEventListener('click', function(e){
+            e.preventDefault();
+            const service = btn.dataset.service || '';
+            document.getElementById('bn-service-text').innerText = service;
+            document.getElementById('bn-service').value = service;
+            document.getElementById('bn-email').value = '';
+            document.getElementById('bn-phone').value = '';
+            document.getElementById('bn-response').textContent = '';
+            $('#bookNowModal').modal('show');
+          });
+        });
+
+        const form = document.getElementById('bookNowForm');
+        const submitBtn = document.getElementById('bn-submit');
+        const resp = document.getElementById('bn-response');
+        if (form) {
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            resp.textContent = '';
+            const email = document.getElementById('bn-email').value.trim();
+            const phone = document.getElementById('bn-phone').value.trim();
+            const service = document.getElementById('bn-service').value;
+            if (!isNonEmpty(email) && !isNonEmpty(phone)) {
+              resp.style.color = 'red';
+              resp.textContent = 'Please provide email or phone so we can contact you.';
+              return;
+            }
+            if (isNonEmpty(email) && !isValidEmail(email)) {
+              resp.style.color = 'red';
+              resp.textContent = 'Please enter a valid email.';
+              return;
+            }
+            submitBtn.disabled = true;
+            const orig = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+
+            const fd = new FormData();
+            fd.append('email', email);
+            fd.append('phone', phone);
+            fd.append('service', service);
+
+            fetch(BOOK_SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' })
+              .then(()=> {
+                resp.style.color = 'green';
+                resp.textContent = '✅ Request sent. We will contact you soon.';
+                setTimeout(()=> { $('#bookNowModal').modal('hide'); }, 1200);
+              })
+              .catch(()=> {
+                resp.style.color = 'red';
+                resp.textContent = '❌ Error sending request. Please try again.';
+              })
+              .finally(()=> {
+                submitBtn.disabled = false;
+                submitBtn.textContent = orig;
+              });
+          });
+        }
+      })();
     </script>
   </body>
 </html>
