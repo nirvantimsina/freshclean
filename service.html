@@ -40,7 +40,7 @@
           <div class="header-top row align-items-center">
             <div class="col-lg-3">
               <div class="brand">
-                <a href="index.html">
+                <a href="index.html" style="font-size: 35px;">
                   FreshClean Sydney
                   <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -54,8 +54,8 @@
                   >
                 </div>
                 <div class="topbar-col">
-                  <a href="mailto:freshcleansydney@gmail.com"
-                    ><i class="fa fa-envelope"></i>freshcleansydney@gmail.com</a
+                  <a href="mailto:freshcleansyd@gmail.com"
+                    ><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</a
                   >
                 </div>
                 <div class="topbar-col">
@@ -360,7 +360,7 @@
                 <i class="fa fa-map-marker-alt"></i>Sydney, Australia
               </p>
               <p><i class="fa fa-phone-alt"></i>0493 597 634</p>
-              <p><i class="fa fa-envelope"></i>freshcleansydney@gmail.com</p>
+              <p><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</p>
               <div class="footer-social">
                 <a href=""><i class="fab fa-facebook-f"></i></a>
                 <a href=""><i class="fab fa-instagram"></i></a>
@@ -394,8 +394,8 @@
                 Subscribe to the newsletter to stay updated on our latest news
                 and exciting discounts, only for you.
               </p>
-              <input class="form-control" placeholder="Email here" />
-              <button class="btn">Submit</button>
+              <input id="footer-newsletter-input" class="form-control" placeholder="Email here" />
+              <button id="footer-newsletter-email" class="btn">Submit</button>
             </div>
           </div>
         </div>
@@ -438,5 +438,31 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+    // filepath: /home/nirvan/Desktop/Code/freshclean/service.html
+    const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec';
+    function isValidEmail(email) { return /\S+@\S+\.\S+/.test(email); }
+    function attachNewsletter(buttonId, inputId) {
+      const btn = document.getElementById(buttonId);
+      const input = document.getElementById(inputId);
+      if (!btn || !input) return;
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const email = input.value.trim();
+        if (!email) { alert('Please enter your email.'); input.focus(); return; }
+        if (!isValidEmail(email)) { alert('Please enter a valid email address.'); input.focus(); return; }
+        btn.disabled = true;
+        const orig = btn.textContent;
+        btn.textContent = 'Sending...';
+        const data = new FormData();
+        data.append('email', email);
+        fetch(NEWSLETTER_SCRIPT_URL, { method: 'POST', body: data, mode: 'no-cors' })
+          .then(() => { btn.textContent = 'Sent'; input.value = ''; setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 2000); })
+          .catch(()=>{ btn.textContent = orig; btn.disabled = false; alert('Error sending subscription.'); });
+      });
+    }
+    attachNewsletter('newsletter-email', 'newsletter-input');
+    attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
+    </script>
   </body>
 </html>

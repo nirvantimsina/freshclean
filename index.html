@@ -40,7 +40,7 @@
           <div class="header-top row align-items-center">
             <div class="col-lg-3">
               <div class="brand">
-                <a href="index.html">
+                <a href="index.html" style="font-size: 35px">
                   FreshClean Sydney
                   <!-- <img src="img/favicon.ico" alt="Logo"> -->
                 </a>
@@ -54,8 +54,8 @@
                   >
                 </div>
                 <div class="topbar-col">
-                  <a href="mailto:freshcleansydney@gmail.com"
-                    ><i class="fa fa-envelope"></i>freshcleansydney@gmail.com</a
+                  <a href="mailto:freshcleansyd@gmail.com"
+                    ><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</a
                   >
                 </div>
                 <div class="topbar-col">
@@ -126,7 +126,7 @@
             <div class="col-md-5">
               <div class="form">
                 <h3>Get A Quote</h3>
-                <form>
+                <form id="quoteForm" method="POST">
                   <input
                     class="form-control"
                     type="text"
@@ -141,23 +141,44 @@
                     name="phone"
                     required
                   />
-                  <input class="form-control" type="text" placeholder="Email" name="email" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                  />
                   <div class="control-group">
                     <select name="service" class="custom-select">
-                      <option value="" selected disabled>Choose a service</option>
-                      <option value="end of lease">End of Lease/Bond Cleaning</option>
+                      <option value="" selected disabled>
+                        Choose a service
+                      </option>
+                      <option value="end of lease">
+                        End of Lease/Bond Cleaning
+                      </option>
                       <option value="carpet cleaning">Carpet Cleaning</option>
-                      <option value="office/commercial cleaning">Office/Commercial Cleaning</option>
+                      <option value="office/commercial cleaning">
+                        Office/Commercial Cleaning
+                      </option>
                       <option value="house cleaning">House Cleaning</option>
-                      <option value="airbnb/hotel cleaning">Airbnb/Hotels Cleaning</option>
-                      <option value="residential cleaning">Residential Cleaning</option>
-                      <option value="restaurant/bar cleaning">Restaurant/Bar Cleaning</option>
-                      <option value="move in/move out cleaning">Move In/Move Out Cleaning</option>
+                      <option value="airbnb/hotel cleaning">
+                        Airbnb/Hotels Cleaning
+                      </option>
+                      <option value="residential cleaning">
+                        Residential Cleaning
+                      </option>
+                      <option value="restaurant/bar cleaning">
+                        Restaurant/Bar Cleaning
+                      </option>
+                      <option value="move in/move out cleaning">
+                        Move In/Move Out Cleaning
+                      </option>
                       <option value="instant cleaning">
                         Instant Cleaning(Oven, Fridge, Walls, Blinds, Mattress
                         etc.)
                       </option>
-                      <option value="window/glass cleaning">Window/Glass Cleaning</option>
+                      <option value="window/glass cleaning">
+                        Window/Glass Cleaning
+                      </option>
                       <option value="garage/outdoor/balcony cleaning">
                         Garage/ Outdoor/ Balcony Cleaning
                       </option>
@@ -166,21 +187,31 @@
                   </div>
                   <div class="control-group">
                     <select name="frequency" class="custom-select">
-                      <option value="" selected disabled>Choose the Frequency</option>
+                      <option value="" selected disabled>
+                        Choose the Frequency
+                      </option>
                       <option value="one-off">One Time Cleaning</option>
                       <option value="weekly">Weekly Cleaning</option>
                       <option value="fortnightly">Fortnightly Cleaning</option>
                       <option value="monthly">Monthly Cleaning</option>
-                      </select>
-                      </div>
+                    </select>
+                  </div>
                   <textarea
                     class="form-control"
                     placeholder="Message"
                     name="message"
                   ></textarea>
-                  <button class="btn btn-block">Get A Quote</button>
+                  <button type="submit" class="btn btn-block">
+                    Get A Quote
+                  </button>
                 </form>
                 <p id="responseMessage"></p>
+                <div
+                  id="loading"
+                  style="display: none; margin-top: 10px; color: #007bff"
+                >
+                  ⏳ Sending your request...
+                </div>
               </div>
             </div>
           </div>
@@ -550,8 +581,8 @@
             </div>
             <div class="col-md-4">
               <div class="form">
-                <input class="form-control" placeholder="Email here" />
-                <button class="btn">Submit</button>
+                <input id="newsletter-input" class="form-control" placeholder="Email here" />
+                <button id="newsletter-email" class="btn">Submit</button>
               </div>
             </div>
           </div>
@@ -721,7 +752,7 @@
                 <h2>Get In Touch</h2>
                 <p><i class="fa fa-map-marker-alt"></i>Sydney, Australia</p>
                 <p><i class="fa fa-phone-alt"></i>0493 597 634</p>
-                <p><i class="fa fa-envelope"></i>freshcleansydney@gmail.com</p>
+                <p><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</p>
                 <div class="footer-social">
                   <a href=""><i class="fab fa-facebook-f"></i></a>
                   <a href=""><i class="fab fa-instagram"></i></a>
@@ -755,8 +786,8 @@
                   Subscribe to the newsletter to stay updated on our latest news
                   and exciting discounts, only for you.
                 </p>
-                <input class="form-control" placeholder="Email here" />
-                <button class="btn">Submit</button>
+                <input id="footer-newsletter-input" class="form-control" placeholder="Email here" />
+                <button id="footer-newsletter-email" class="btn">Submit</button>
               </div>
             </div>
           </div>
@@ -798,28 +829,89 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
   </body>
-  <script>
-    document
-      .getElementById("quoteForm")
-      .addEventListener("submit", function (e) {
-        e.preventDefault();
+<script>
+const form = document.getElementById("quoteForm");
+const loading = document.getElementById("loading");
+const responseMessage = document.getElementById("responseMessage");
 
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
+// TODO: Replace the value below with YOUR deployed Apps Script web app URL
+// Example: https://script.google.com/macros/s/AKfycbx.../exec
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-vDSwtzpEoIdSnLUV0lB2tT9NtvTUewYsK8yb-0raht94OE4NM1sSviOVSvUWgg-L/exec';
 
-        fetch("https://script.google.com/macros/s/AKfycbx-vDSwtzpEoIdSnLUV0lB2tT9NtvTUewYsK8yb-0raht94OE4NM1sSviOVSvUWgg-L/exec", {
-          method: "POST",
-          body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((result) => {
-            document.getElementById("responseMessage").innerHTML =
-              "Thank you! Your request has been submitted.";
-          })
-          .catch((error) => {
-            document.getElementById("responseMessage").innerHTML =
-              "Error submitting the form.";
-          });
-      });
-  </script>
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    loading.style.display = "block";
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    responseMessage.innerHTML = "";
+
+    const formData = new FormData(form);
+
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"  // keep no-cors unless you've configured CORS on the Apps Script (deploy + allow)
+    }).then(() => {
+        loading.style.display = "none";
+        button.disabled = false;
+        responseMessage.innerHTML = "✅ Thank you! Your request has been submitted.";
+        form.reset();
+    }).catch(() => {
+        loading.style.display = "none";
+        button.disabled = false;
+        responseMessage.innerHTML = "❌ Error submitting the form.";
+    });
+});
+</script>
+
+<script>
+// filepath: /home/nirvan/Desktop/Code/freshclean/index.html
+// Newsletter subscription handler
+
+const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec';
+
+function isValidEmail(email) {
+  return /\S+@\S+\.\S+/.test(email);
+}
+
+function attachNewsletter(buttonId, inputId) {
+  const btn = document.getElementById(buttonId);
+  const input = document.getElementById(inputId);
+  if (!btn || !input) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!email) { alert('Please enter your email.'); input.focus(); return; }
+    if (!isValidEmail(email)) { alert('Please enter a valid email address.'); input.focus(); return; }
+
+    btn.disabled = true;
+    const origText = btn.textContent;
+    btn.textContent = 'Sending...';
+
+    const data = new FormData();
+    data.append('email', email);
+
+    fetch(NEWSLETTER_SCRIPT_URL, {
+      method: 'POST',
+      body: data,
+      mode: 'no-cors' // Apps Script often requires no-cors for simple deployments
+    }).then(() => {
+      btn.textContent = 'Sent';
+      input.value = '';
+      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
+    }).catch(() => {
+      btn.textContent = origText;
+      btn.disabled = false;
+      alert('Error sending subscription. Please try again.');
+    });
+  });
+}
+
+// attach to both newsletter buttons
+attachNewsletter('newsletter-email', 'newsletter-input');
+attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
+</script>
+
+
 </html>
