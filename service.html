@@ -2,19 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>FreshClean Sydney</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Cleaning Company Website Template" name="keywords" />
-    <meta content="Cleaning Company Website Template" name="description" />
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap"
-      rel="stylesheet"
-    />
+    <title>FreshClean Sydney | Services — End of Lease, Carpet, Commercial</title>
+    <meta name="description" content="FreshClean Sydney provides end-of-lease, carpet steam, office and commercial cleaning across Sydney. Professional, insured and eco-friendly." />
+    <meta name="keywords" content="cleaning services Sydney, end of lease cleaning, carpet steam cleaning, office cleaning" />
+    <meta property="og:title" content="FreshClean Sydney — Services" />
+    <meta property="og:description" content="End-of-lease, carpet, office & commercial cleaning across Sydney. Book a trusted cleaner today." />
+    <meta property="og:image" content="https://freshcleansydney.com.au/img/service-1.jpg" />
+    <meta property="og:url" content="https://freshcleansydney.com.au/service.html" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://freshcleansydney.com.au/service.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FreshClean Sydney — Services" />
+    <meta name="twitter:description" content="End-of-lease, carpet and commercial cleaning across Sydney. Professional and insured cleaners." />
+    <meta name="twitter:image" content="https://freshcleansydney.com.au/img/service-1.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
 
     <!-- CSS Libraries -->
     <link
@@ -566,5 +568,27 @@
         }
       })();
     </script>
+
+    <!-- One-time animation runner (same as index) -->
+    <script>
+(function(){
+  const FLAG = 'freshclean_animations_played_v1';
+  const elems = document.querySelectorAll('.animate-once');
+  if (localStorage.getItem(FLAG)) { elems.forEach(e => e.classList.add('play')); return; }
+  if ('IntersectionObserver' in window && elems.length) {
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('play');
+          observer.unobserve(entry.target);
+          const remaining = document.querySelectorAll('.animate-once:not(.play)');
+          if (remaining.length === 0) localStorage.setItem(FLAG, '1');
+        }
+      });
+    }, { threshold: 0.15 });
+    elems.forEach(e => obs.observe(e));
+  } else { elems.forEach(e => e.classList.add('play')); localStorage.setItem(FLAG, '1'); }
+})();
+</script>
   </body>
 </html>

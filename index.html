@@ -2,10 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>FreshClean Sydney</title>
+    <title>FreshClean Sydney — Sparkling Homes in 60s | End-of-lease, Carpet & Commercial</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Cleaning Company Website Template" name="keywords" />
-    <meta content="Cleaning Company Website Template" name="description" />
+    <meta name="description" content="FreshClean Sydney — Fast, eco-friendly cleaning across Sydney. End-of-lease, carpet steam, commercial & residential cleaning. Book a pro in 60 seconds — 1000+ happy homes." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://freshcleansydney.com.au/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FreshClean Sydney — Sparkling Homes in 60s" />
+    <meta property="og:description" content="Fast, eco-friendly cleaning across Sydney. End-of-lease, carpet and commercial cleaning. Book online now." />
+    <meta property="og:image" content="https://freshcleansydney.com.au/img/about.jpg" />
+    <meta property="og:url" content="https://freshcleansydney.com.au/" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FreshClean Sydney — Sparkling Homes in 60s" />
+    <meta name="twitter:description" content="Book professional, insured cleaners across Sydney in 60s. End-of-lease, carpet steam & commercial cleaning." />
+    <meta name="twitter:image" content="https://freshcleansydney.com.au/img/about.jpg" />
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon" />
@@ -15,6 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
 
     <!-- CSS Libraries -->
     <link
@@ -30,6 +44,28 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "FreshClean Sydney",
+      "image": "https://freshcleansydney.com.au/img/about.jpg",
+      "telephone": "+61493597634",
+      "email": "freshcleansyd@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sydney (service area)",
+        "addressLocality": "Sydney",
+        "addressRegion": "NSW",
+        "postalCode": "",
+        "addressCountry": "AU"
+      },
+      "url": "https://freshcleansydney.com.au",
+      "priceRange": "$$",
+      "openingHours": ["Mo-Fr 08:00-18:00","Sa 09:00-14:00"],
+      "sameAs": ["https://www.facebook.com/yourpage","https://www.instagram.com/yourpage"]
+    }
+    </script>
   </head>
 
   <body>
@@ -116,17 +152,36 @@
             </div>
           </div>
 
-          <div class="hero row align-items-center">
+          <div class="hero row align-items-center" role="region" aria-label="Main hero">
             <div class="col-md-7">
-              <h2>Best & Trusted</h2>
-              <h2><span>Cleaning</span> Service</h2>
-              <p>We keep it clean, always!</p>
-              <a class="btn" href="./service.html">Explore Now</a>
-            </div>
-            <div class="col-md-5">
-              <div class="form">
-                <h3>Get A Quote</h3>
-                <form id="quoteForm" method="POST">
+              <!-- Primary heading for SEO and clarity -->
+              <h1 class="animate-once" style="font-size:30px; margin-bottom:6px;">FreshClean Sydney — Sparkling Homes in 60s!</h1>
+              <h2 class="animate-once animate-fade" style="font-size:25px; color:#fff;">Fast. Eco. Reliable. Loved by 1000+ Sydney Homes</h2>
+              <p class="lead animate-once" style="max-width:520px; margin-bottom:12px;">
+                Experience a faster, greener clean — end-of-lease, carpets, offices and more. Book online now and get your home sparkling.
+              </p>
+               <a class="btn btn-primary" href="./service.html">Explore Services</a>
+               <!-- Compact collage: smaller footprint for quick glance -->
+               <div class="windows-collage compact" aria-hidden="false">
+                 <div class="tile tile--window animate" style="background-image:url('img/service-1.jpg')" role="img" aria-label="End of lease cleaning">
+                   <div class="tile-label">End of Lease</div>
+                 </div>
+                 <div class="tile animate-once" style="background-image:url('img/service-2.jpg')" role="img" aria-label="Glass cleaning">
+                   <div class="tile-label">Glass</div>
+                 </div>
+                 <div class="tile animate-once" style="background-image:url('img/service-3.jpg')" role="img" aria-label="Carpet cleaning">
+                   <div class="tile-label">Carpet</div>
+                 </div>
+                 <div class="tile animate-once" style="background-image:url('img/about.jpg')" role="img" aria-label="Residential cleaning">
+                   <div class="tile-label">Residential</div>
+                 </div>
+               </div>
+              </div>
+             <div class="col-md-5">
+              <!-- Right column: compact Get A Quote + quick bullets for glance -->
+              <div class="form animate-once" style="max-width:420px; margin-left:auto;">
+                <h3 style="margin-bottom:8px;">Get A Quote</h3>
+                <form id="quoteForm" method="POST" aria-label="Get a quote form">
                   <input
                     class="form-control"
                     type="text"
@@ -213,10 +268,11 @@
                   ⏳ Sending your request...
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
       <!-- Header End -->
 
       <!-- About Start -->
@@ -1018,5 +1074,34 @@ attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
   })();
 </script>
 
+
+<!-- One-time animation runner: triggers .play on .animate-once elements when they first enter viewport.  -->
+<script>
+(function(){
+  const FLAG = 'freshclean_animations_played_v1';
+  const elems = document.querySelectorAll('.animate-once');
+  if (localStorage.getItem(FLAG)) {
+    elems.forEach(e => e.classList.add('play'));
+    return;
+  }
+  if ('IntersectionObserver' in window && elems.length) {
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('play');
+          observer.unobserve(entry.target);
+          // if no more unseen elements, set flag so animations don't replay
+          const remaining = document.querySelectorAll('.animate-once:not(.play)');
+          if (remaining.length === 0) localStorage.setItem(FLAG, '1');
+        }
+      });
+    }, { threshold: 0.15 });
+    elems.forEach(e => obs.observe(e));
+  } else {
+    elems.forEach(e => e.classList.add('play'));
+    localStorage.setItem(FLAG, '1');
+  }
+})();
+</script>
 
 </html>
