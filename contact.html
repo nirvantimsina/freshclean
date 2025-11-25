@@ -40,7 +40,7 @@
           <div class="header-top row align-items-center">
             <div class="col-lg-3">
               <div class="brand">
-                <a href="index.html" style="font-size: 35px;">
+                <a href="index.html" style="font-size: 35px">
                   FreshClean Sydney
                   <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -301,9 +301,11 @@
                     ></textarea>
                   </div>
                   <div>
-                    <button id="contact-submit" class="btn" type="submit">Send Message</button>
+                    <button id="contact-submit" class="btn" type="submit">
+                      Send Message
+                    </button>
                   </div>
-                  <p id="contactResponse" style="margin-top:10px;"></p>
+                  <p id="contactResponse" style="margin-top: 10px"></p>
                 </form>
               </div>
             </div>
@@ -356,8 +358,14 @@
                   Subscribe to the newsletter to stay updated on our latest news
                   and exciting discounts, only for you.
                 </p>
-                <input id="footer-newsletter-input" class="form-control" placeholder="Email here" />
-                <button id="footer-newsletter-email" type="button" class="btn">Submit</button>
+                <input
+                  id="footer-newsletter-input"
+                  class="form-control"
+                  placeholder="Email here"
+                />
+                <button id="footer-newsletter-email" type="button" class="btn">
+                  Submit
+                </button>
               </div>
             </div>
           </div>
@@ -402,73 +410,106 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-    // filepath: /home/nirvan/Desktop/Code/freshclean/contact.html
-    (function(){
-      const FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1tb2xj2mG4G9U4eI3_s_ibiW5JBD88Hmf_BOpSlhf2LymtrxRhUcWPoZGqpSmaDbn/exec';
-      const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec';
+      // filepath: /home/nirvan/Desktop/Code/freshclean/contact.html
+      (function () {
+        const FORM_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbx1tb2xj2mG4G9U4eI3_s_ibiW5JBD88Hmf_BOpSlhf2LymtrxRhUcWPoZGqpSmaDbn/exec";
+        const NEWSLETTER_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec";
 
-      // Contact form handler (unchanged behavior)
-      const form = document.getElementById('contactForm');
-      const submitBtn = document.getElementById('contact-submit');
-      const responseEl = document.getElementById('contactResponse');
-      if (form) {
-        form.addEventListener('submit', function(e){
-          e.preventDefault();
-          responseEl.textContent = '';
-          submitBtn.disabled = true;
-          const origText = submitBtn.textContent;
-          submitBtn.textContent = 'Sending...';
-          const data = new FormData(form);
-          fetch(FORM_SCRIPT_URL, { method: 'POST', body: data, mode: 'no-cors' })
-            .then(function(){
-              responseEl.style.color = 'green';
-              responseEl.textContent = '✅ Message sent. We will contact you shortly.';
-              form.reset();
-            }).catch(function(){
-              responseEl.style.color = 'red';
-              responseEl.textContent = '❌ Error sending message. Please try again later.';
-            }).finally(function(){
-              submitBtn.disabled = false;
-              submitBtn.textContent = origText;
-            });
-        });
-      }
+        // Contact form handler (unchanged behavior)
+        const form = document.getElementById("contactForm");
+        const submitBtn = document.getElementById("contact-submit");
+        const responseEl = document.getElementById("contactResponse");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            responseEl.textContent = "";
+            submitBtn.disabled = true;
+            const origText = submitBtn.textContent;
+            submitBtn.textContent = "Sending...";
+            const data = new FormData(form);
+            fetch(FORM_SCRIPT_URL, {
+              method: "POST",
+              body: data,
+              mode: "no-cors",
+            })
+              .then(function () {
+                responseEl.style.color = "green";
+                responseEl.textContent =
+                  "✅ Message sent. We will contact you shortly.";
+                form.reset();
+              })
+              .catch(function () {
+                responseEl.style.color = "red";
+                responseEl.textContent =
+                  "❌ Error sending message. Please try again later.";
+              })
+              .finally(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = origText;
+              });
+          });
+        }
 
-      // Newsletter helper
-      function isValidEmail(email) { return /\S+@\S+\.\S+/.test(email); }
+        // Newsletter helper
+        function isValidEmail(email) {
+          return /\S+@\S+\.\S+/.test(email);
+        }
 
-      function attachNewsletter(buttonId, inputId) {
-        const btn = document.getElementById(buttonId);
-        const input = document.getElementById(inputId);
-        if (!btn || !input) return;
-        btn.type = 'button';
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const email = input.value.trim();
-          if (!email) { alert('Please enter your email.'); input.focus(); return; }
-          if (!isValidEmail(email)) { alert('Please enter a valid email address.'); input.focus(); return; }
-          btn.disabled = true;
-          const orig = btn.textContent;
-          btn.textContent = 'Sending...';
-          // primary POST (no-cors)
-          const fd = new FormData();
-          fd.append('email', email);
-          fetch(NEWSLETTER_SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' })
-            .catch(()=>{})
-            .finally(()=> {
-              // beacon GET fallback (increases chance the Apps Script receives the value)
-              try { new Image().src = NEWSLETTER_SCRIPT_URL + '?email=' + encodeURIComponent(email) + '&_=' + Date.now(); } catch(e) {}
-              btn.textContent = 'Sent';
-              input.value = '';
-              setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 2000);
-            });
-        });
-      }
+        function attachNewsletter(buttonId, inputId) {
+          const btn = document.getElementById(buttonId);
+          const input = document.getElementById(inputId);
+          if (!btn || !input) return;
+          btn.type = "button";
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const email = input.value.trim();
+            if (!email) {
+              alert("Please enter your email.");
+              input.focus();
+              return;
+            }
+            if (!isValidEmail(email)) {
+              alert("Please enter a valid email address.");
+              input.focus();
+              return;
+            }
+            btn.disabled = true;
+            const orig = btn.textContent;
+            btn.textContent = "Sending...";
+            // primary POST (no-cors)
+            const fd = new FormData();
+            fd.append("email", email);
+            fetch(NEWSLETTER_SCRIPT_URL, {
+              method: "POST",
+              body: fd,
+              mode: "no-cors",
+            })
+              .catch(() => {})
+              .finally(() => {
+                // beacon GET fallback (increases chance the Apps Script receives the value)
+                try {
+                  new Image().src =
+                    NEWSLETTER_SCRIPT_URL +
+                    "?email=" +
+                    encodeURIComponent(email) +
+                    "&_=" +
+                    Date.now();
+                } catch (e) {}
+                btn.textContent = "Sent";
+                input.value = "";
+                setTimeout(() => {
+                  btn.textContent = orig;
+                  btn.disabled = false;
+                }, 2000);
+              });
+          });
+        }
 
-      // attach to footer newsletter controls
-      attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
-
-    })();
+        // attach to footer newsletter controls
+        attachNewsletter("footer-newsletter-email", "footer-newsletter-input");
+      })();
     </script>
   </body>
 </html>
