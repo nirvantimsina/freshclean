@@ -1,33 +1,50 @@
-.whatsapp-button {
-                      background-color: #25d366;
-                      color: white;
-                      padding: 12px 20px;
-                      border-radius: 8px;
-                      text-decoration: none;
-                      font-size: 16px;
-                      font-weight: bold;
+/* Palette tweaks (modern teal + coral accents) */
+:root{
+  --bg-100: #f7fbf9;
+  --primary: #0b6e4f;    /* teal */
+  --accent: #ff7a59;     /* coral */
+  --warm: #ffb74d;       /* warm CTA */
+  --muted: #374151;      /* darker neutral for text */
+  --card: #ffffff;
+  --glass: rgba(255,255,255,0.7);
+  --shadow: 0 10px 30px rgba(15,22,40,0.06);
 }
 
-.whatsapp-button:hover {
-    background-color: #1ebe5d;
-}
-/*******************************/
-/********* General CSS *********/
-/*******************************/
+/* modern base */
 body {
-    color: #666666;
-    background: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    color: var(--muted);
+    background: linear-gradient(180deg, var(--bg-100) 0%, #ffffff 100%);
+    font-family: 'Poppins', 'Montserrat', sans-serif;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2, 
-h3, 
-h4,
-h5, 
-h6 {
-    font-weight: 100;
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+  color: #052a5f;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--primary);
+  margin: 0 0 12px;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 20px;
+  color: #183b7a;
+  margin: 0 0 10px;
+}
+
+h4, h5, h6 {
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0 0 8px;
 }
 
 a {
@@ -47,12 +64,93 @@ a:focus {
     box-shadow: none;
 }
 
+/* Make site edge-to-edge (remove page left/right margins) */
 .wrapper {
     position: relative;
     width: 100%;
-    max-width: 1366px;
-    margin: 0 auto;
-    background: #ffffff;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+/* Accessible focus styles */
+:focus {
+  outline: 3px solid rgba(15,98,254,0.18);
+  outline-offset: 3px;
+}
+
+/* One-time entrance animations (play only once) */
+.animate-once {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.animate-once.play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle element-level keyframe for larger pieces (used via class 'animate-fade') */
+@keyframes fadeUp { from { opacity:0; transform: translateY(18px) } to { opacity:1; transform: translateY(0) } }
+.animate-fade.play { animation: fadeUp 650ms ease both; }
+
+/* Card hover lift for service/price/blog/portfolio */
+.service .service-item,
+.price .price-item,
+.blog .blog-item,
+.portfolio .portfolio-item figure,
+.testimonial .testimonial-content {
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.service .service-item:hover,
+.price .price-item:hover,
+.blog .blog-item:hover,
+.portfolio .portfolio-item figure:hover,
+.testimonial .testimonial-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 50px rgba(8,28,63,0.12);
+}
+
+/* Pricing card: thin border and hover lift */
+.price .price-item {
+    text-align: center;
+    background: var(--card);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(15,22,40,0.06); /* thin border */
+    box-shadow: 0 6px 20px rgba(8,28,63,0.06);
+}
+
+/* Collage: Windows-style 2x2 grid (four pictures) */
+.windows-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 22px;
+}
+
+/* make each tile occupy a quarter so it visually forms the Windows logo */
+.tile { border-radius: 12px; overflow: hidden; }
+.tile--window { grid-column: span 2; grid-row: span 2; }
+
+/* responsive adjustments */
+@media (max-width: 991px) {
+  .windows-collage { grid-template-columns: repeat(2,1fr); grid-auto-rows:120px; gap:10px; }
+  .tile--window { grid-column: span 1; grid-row: span 1; }
+  .header .hero h2 { font-size: 34px; }
+}
+@media (max-width: 576px){
+  .windows-collage { grid-template-columns: repeat(2,1fr); grid-auto-rows:80px; gap:10px; }
+  .header .hero { padding-top: 30px; padding-bottom:30px; }
+}
+
+/* minor adjustments for form contrast on hero */
+.header .hero .form {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+    border: none;
 }
 
 .back-to-top {
@@ -89,7 +187,7 @@ a:focus {
     position: relative;
     width: 100%;
     padding: 15px 0 0 0;
-    background: #00539C;
+    background: linear-gradient(90deg, rgba(15,98,254,0.95), rgba(0,67,139,0.95));
 }
 
 .header.home {
@@ -274,19 +372,21 @@ a:focus {
 }
 
 .header .hero {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    min-height: auto;
 }
 
 .header .hero h2 {
     margin: 0;
-    font-size: 60px;
-    font-weight: 100;
-    color: #ffffff;
+    font-size: 44px;
+    font-weight: 700;
+    color:#fff;
 }
 
 .header .hero h2 span {
-    color: #FFD662;
+    color: var(--warm);
+    font-weight:700;
 }
 
 .header .hero p {
@@ -418,6 +518,39 @@ a:focus {
     display: none;
 }
 
+/* Contact page specific sizing to keep proportions consistent with other pages */
+.page-header.contact-page {
+  padding: 40px 0; /* smaller vertical padding for contact page */
+}
+.page-header.contact-page h2 {
+  font-size: 32px;
+  line-height: 1.05;
+}
+
+/* Constrain the contact container so the content doesn't span too wide */
+.contact .container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make the FAQ column and contact form visually balanced */
+.contact .faqs {
+  padding-right: 20px;
+}
+.contact .contact-form {
+  max-width: 520px;
+  margin-left: auto; /* keeps the form to the right and aligned */
+  padding-left: 12px;
+}
+
+/* On small screens make the layout stack with comfortable spacing */
+@media (max-width: 767.98px) {
+  .page-header.contact-page { padding: 28px 0; }
+  .page-header.contact-page h2 { font-size: 26px; }
+  .contact .faqs { padding-right: 0; margin-bottom: 18px; }
+  .contact .contact-form { margin-left: 0; max-width: 100%; padding-left: 0; }
+}
 
 /*******************************/
 /******* Section Header ********/
@@ -551,7 +684,7 @@ a:focus {
     background: #ffffff;
     border-radius: 5px;
     margin-bottom: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+    box-shadow: var(--shadow);
 }
 
 .service .service-item img {
@@ -880,22 +1013,22 @@ a:focus {
 
 .price .price-item {
     text-align: center;
-    background: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
-    margin-bottom: 30px;
+    background: var(--card);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(15,22,40,0.06); /* thin border */
+    box-shadow: 0 6px 20px rgba(8,28,63,0.06);
 }
 
 .price .price-header {
-    padding: 30px 0 50px 0;
-    color: #000000;
-    background: #FFD662;
+    padding: 28px 20px;
+    color: #fff;
+    background: linear-gradient(90deg, var(--warm), var(--primary));
     border-radius: 5px 5px 0 0;
 }
 
 .price .featured-item .price-header {
-    color: #ffffff;
-    background: #00539C;
+    background: linear-gradient(90deg, var(--primary), #003a8c);
 }
 
 .price .price-icon {
@@ -996,9 +1129,11 @@ a:focus {
 /*******************************/
 .newsletter {
     position: relative;
-    margin: 45px 0;
-    padding: 60px 0;
-    background: #00539C;
+    margin: 40px 18px;
+    padding: 36px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #052a5f, #0f4bd6);
+    color:#fff;
 }
 
 .newsletter h2 {
@@ -1741,8 +1876,8 @@ a:focus {
     position: relative;
     margin-top: 45px;
     padding-top: 90px;
-    background: #00539C;
-    color: #ffffff;
+    background: linear-gradient(180deg, #052a5f 0%, #003060 100%);
+    color: #e6eefc;
     font-weight: 300;
 }
 
@@ -1900,4 +2035,161 @@ a:focus {
         margin: 5px 0;
         text-align: center;
     }
+}
+
+/* new: Windows-style collage */
+.windows-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 160px;
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 22px;
+}
+
+/* tile base */
+.windows-collage .tile {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(8,28,63,0.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* tile label overlay */
+.windows-collage .tile::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.windows-collage .tile .tile-label{
+  position:relative;
+  z-index:2;
+  color:#fff;
+  font-weight:600;
+  padding:10px 12px;
+  font-size:14px;
+}
+
+/* different tile sizes (Windows-like) */
+.tile--span-2col { grid-column: span 2; }
+.tile--span-3col { grid-column: span 3; }
+.tile--span-2row { grid-row: span 2; }
+.tile--tall { grid-row: span 2; }
+
+/* hover */
+.windows-collage .tile:hover{ transform: translateY(-6px); box-shadow: 0 14px 40px rgba(8,28,63,0.18); }
+
+/* responsive */
+@media (max-width: 991px){
+  .windows-collage { grid-template-columns: repeat(2,1fr); grid-auto-rows:120px; gap:10px; }
+  .tile--window { grid-column: span 1; grid-row: span 1; }
+  .header .hero h2 { font-size: 34px; }
+}
+@media (max-width: 576px){
+  .windows-collage { grid-template-columns: repeat(2,1fr); grid-auto-rows:80px; gap:10px; }
+  .header .hero { padding-top: 30px; padding-bottom:30px; }
+}
+
+/* compact variant: smaller, tighter collage for homepage */
+.windows-collage.compact {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 110px;
+  gap: 10px;
+  margin-top: 12px;
+  align-items: stretch;
+}
+
+/* slightly smaller tile visuals inside compact layout */
+.windows-collage.compact .tile {
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(8,28,63,0.10);
+}
+.windows-collage.compact .tile .tile-label {
+  font-size: 13px;
+  padding: 8px 10px;
+}
+
+/* keep the bigger tile but tuned for 3-column layout */
+.windows-collage.compact .tile--window {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* responsive adjustments for compact: 2 columns on medium, 1 on small */
+@media (max-width: 991px) {
+  .windows-collage.compact { grid-template-columns: repeat(2,1fr); grid-auto-rows:100px; gap:10px; }
+  .windows-collage.compact .tile--window { grid-column: span 2; grid-row: span 1; } /* don't be too tall on medium */
+}
+@media (max-width: 576px) {
+  .windows-collage.compact { grid-template-columns: repeat(1,1fr); grid-auto-rows:120px; gap:10px; }
+  .windows-collage.compact .tile--window { grid-column: span 1; grid-row: span 1; }
+}
+
+/* WhatsApp button: consistent, accessible, responsive */
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff !important;
+  border-radius: 999px;
+  box-shadow: 0 8px 26px rgba(18,140,126,0.12);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+  white-space: nowrap;
+}
+.whatsapp-button i { font-size: 16px; line-height: 1; }
+
+/* Hover / active / focus states */
+.whatsapp-button:hover,
+.whatsapp-button:active {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(18,140,126,0.18);
+  opacity: 0.98;
+}
+.whatsapp-button:focus {
+  outline: 3px solid rgba(37,211,102,0.16);
+  outline-offset: 3px;
+}
+
+/* Ensure nav spacing doesn't collapse on small screens */
+.navbar .whatsapp-button { margin-left: 10px; }
+
+/* Floating mobile button (appears only on small screens) */
+.whatsapp-floating {
+  position: fixed;
+  right: 18px;
+  bottom: 88px;
+  z-index: 1200;
+  display: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.whatsapp-floating .whatsapp-button {
+  padding: 12px 16px;
+  font-size: 15px;
+  box-shadow: 0 14px 40px rgba(18,140,126,0.18);
+}
+
+/* show floating button on small screens, hide desktop inline if needed */
+@media (max-width: 992px) {
+  .whatsapp-floating { display: block; }
+  /* keep header inline button visible on smaller navbars but tweak spacing */
+  .navbar .whatsapp-button { margin-left: 8px; font-size: 13px; padding: 6px 10px; }
+}
+
+/* On very small screens, reduce size to avoid overlap with back-to-top */
+@media (max-width: 480px) {
+  .whatsapp-floating { right: 12px; bottom: 78px; }
+  .whatsapp-floating .whatsapp-button { padding: 10px 12px; font-size: 13px; }
 }

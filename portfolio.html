@@ -2,16 +2,20 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>CleanMe - Cleaning Company Website Template</title>
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href="https://freshcleansydney.com.au/portfolio.html" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FreshClean Sydney — Project Gallery" />
+        <meta name="twitter:description" content="See examples of residential & commercial cleaning projects across Sydney." />
+        <meta name="twitter:image" content="https://freshcleansydney.com.au/img/portfolio-1.jpg" />
+        <title>FreshClean Sydney — Projects</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Cleaning Company Website Template" name="keywords">
-        <meta content="Cleaning Company Website Template" name="description">
-
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
-
-        <!-- Google Font -->
+        <meta name="description" content="FreshClean Sydney project gallery — examples of residential and commercial cleaning work across Sydney." />
+        <meta name="keywords" content="cleaning projects sydney, portfolio cleaning" />
+        <meta property="og:image" content="https://freshcleansydney.com.au/img/portfolio-1.jpg" />
+        <meta property="og:url" content="https://freshcleansydney.com.au/portfolio.html" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
         
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -339,5 +343,27 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+
+        <!-- One-time animation runner -->
+<script>
+(function(){
+  const FLAG = 'freshclean_animations_played_v1';
+  const elems = document.querySelectorAll('.animate-once');
+  if (localStorage.getItem(FLAG)) { elems.forEach(e => e.classList.add('play')); return; }
+  if ('IntersectionObserver' in window && elems.length) {
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('play');
+          observer.unobserve(entry.target);
+          const remaining = document.querySelectorAll('.animate-once:not(.play)');
+          if (remaining.length === 0) localStorage.setItem(FLAG, '1');
+        }
+      });
+    }, { threshold: 0.15 });
+    elems.forEach(e => obs.observe(e));
+  } else { elems.forEach(e => e.classList.add('play')); localStorage.setItem(FLAG, '1'); }
+})();
+</script>
     </body>
 </html>
