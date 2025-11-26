@@ -32,6 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
   </head>
 
   <body>
@@ -42,9 +45,9 @@
           <div class="header-top row align-items-center">
             <div class="col-lg-3">
               <div class="brand">
-                <a href="index.html" style="font-size: 35px;">
-                  FreshClean Sydney
-                  <!-- <img src="img/logo.png" alt="Logo"> -->
+                <a href="index.html" style="display:flex;align-items:center;font-size:22px;">
+                  <img src="img/favicon.ico" alt="FreshClean logo" style="width:98px;height:98px;margin-right:10px;">
+                  <span style="color:#fff; font-weight:700;">FreshClean Sydney</span>
                 </a>
               </div>
             </div>
@@ -62,8 +65,8 @@
                 </div>
                 <div class="topbar-col">
                   <div class="topbar-social">
-                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61584468710392" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/freshclean.sydney/#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                   </div>
                 </div>
               </div>
@@ -137,49 +140,90 @@
       <div class="container">
         <div class="section-header">
           <p>Our Services</p>
-          <h2>Provide Services Worldwide</h2>
+          <h2>Cleaning Services Built Around You</h2>
         </div>
+
         <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="service-item">
-              <img src="img/service-1.jpg" alt="Service" />
-              <h3>End of Lease Cleaning</h3>
-              <p>
-                We clean up your rented space so that you can be sure that
-                  your bonds are returned, hassel free and seamlessly, leaving
-                  your rented property spotless for the final inspection.
-              </p>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-home"></i></div>
+              <h3>End-of-lease Cleaning</h3>
+              <p>Complete bond-ready cleaning with checklist, deep kitchen & bathroom cleaning and carpet treatment.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=end-of-lease">Learn More</a>
+                <a href="#" class="book-now" data-service="End-of-lease" aria-label="Book End-of-lease Cleaning">Book Now</a>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="service-item">
-              <img src="img/service-2.jpg" alt="Service" />
-              <h3>Glass Cleaning</h3>
-              <p>
-                Be careful you might not recognize that theres a glass window
-                  there, its prestine!
-              </p>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-couch"></i></div>
+              <h3>Carpet & Upholstery</h3>
+              <p>Hot-water extraction (steam) and stain treatment for carpets, rugs and upholstery.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=carpet-cleaning">Learn More</a>
+                <a href="#" class="book-now" data-service="Carpet Cleaning" aria-label="Book Carpet Cleaning">Book Now</a>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="service-item">
-              <img src="img/service-3.jpg" alt="Service" />
-              <h3>Carpet Cleaning</h3>
-              <p>
-                Carpets are a headache and we understand that, let us give you
-                  the relief you've always wanted.
-              </p>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-briefcase"></i></div>
+              <h3>Commercial & Office</h3>
+              <p>Flexible commercial plans for offices, retail and hospitality with evening & weekend slots.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=commercial-cleaning">Learn More</a>
+                <a href="#" class="book-now" data-service="Commercial Cleaning" aria-label="Book Commercial Cleaning">Book Now</a>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="service-item">
-              <img src="img/service-4.jpg" alt="Service" />
-              <h3>Toilet Cleaning</h3>
-              <p>
-                 Our top of the line cleaning equipments make sure no germs are
-                  left and no corners are cut.
-              </p>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-window-maximize"></i></div>
+              <h3>Window & Glass</h3>
+              <p>Interior and exterior window cleaning including frames and sills for a streak-free finish.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=window-cleaning">Learn More</a>
+                <a href="#" class="book-now" data-service="Window Cleaning" aria-label="Book Window Cleaning">Book Now</a>
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-utensils"></i></div>
+              <h3>Oven & Deep Kitchen</h3>
+              <p>One-off deep cleans for ovens, fridges and kitchen cabinets — perfect before inspections or events.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=kitchen-cleaning">Learn More</a>
+                <a href="#" class="book-now" data-service="Kitchen Deep Clean" aria-label="Book Kitchen Cleaning">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item animate-once">
+              <div class="service-icon" style="font-size:40px;color:#00539C;margin-top:10px;"><i class="fa fa-calendar-alt"></i></div>
+              <h3>Regular Clean Plans</h3>
+              <p>Weekly, fortnightly or monthly scheduled cleaning — save time and keep your space consistently fresh.</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <a class="btn" href="single.html?service=regular-clean">Learn More</a>
+                <a href="#" class="book-now" data-service="Regular Cleaning" aria-label="Book Regular Cleaning">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 align-items-center">
+          <div class="col-md-8">
+            <h4>What to expect</h4>
+            <p class="mb-0">Trained teams, insured staff, transparent pricing and optional eco-friendly supplies. We follow a room-by-room checklist and provide photos on request for commercial jobs.</p>
+          </div>
+          <div class="col-md-4 text-md-right mt-3 mt-md-0">
+            <a class="btn btn-primary" href="contact.html" aria-label="Request a quote">Request a Quote</a>
           </div>
         </div>
       </div>
@@ -364,8 +408,8 @@
               <p><i class="fa fa-phone-alt"></i>0493 597 634</p>
               <p><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</p>
               <div class="footer-social">
-                <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61584468710392" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/freshclean.sydney/#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>

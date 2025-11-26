@@ -76,28 +76,24 @@
           <div class="header-top row align-items-center">
             <div class="col-lg-3">
               <div class="brand">
-                <a href="index.html" style="font-size: 35px">
-                  FreshClean Sydney
-                  <!-- <img src="img/favicon.ico" alt="Logo"> -->
+                <a href="index.html" style="font-size: 22px; display:flex; align-items:center;">
+                  <img src="img/favicon.ico" alt="FreshClean logo" style="width:98px;height:98px;margin-right:10px;">
+                  <span style="color:#fff; font-weight:700;">FreshClean Sydney</span>
                 </a>
               </div>
             </div>
             <div class="col-lg-9">
               <div class="topbar">
                 <div class="topbar-col">
-                  <a href="tel:0493597634"
-                    ><i class="fa fa-phone-alt"></i>0493 597 634</a
-                  >
+                  <a href="tel:0493597634"><i class="fa fa-phone-alt"></i>0493 597 634</a>
                 </div>
                 <div class="topbar-col">
-                  <a href="mailto:freshcleansyd@gmail.com"
-                    ><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</a
-                  >
+                  <a href="mailto:freshcleansyd@gmail.com"><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</a>
                 </div>
                 <div class="topbar-col">
                   <div class="topbar-social">
-                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61584468710392" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/freshclean.sydney/#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                   </div>
                 </div>
               </div>
@@ -155,11 +151,15 @@
           <div class="hero row align-items-center" role="region" aria-label="Main hero">
             <div class="col-md-7">
               <!-- Primary heading for SEO and clarity -->
-              <h1 class="animate-once" style="font-size:30px; margin-bottom:6px;">FreshClean Sydney — Sparkling Homes in 60s!</h1>
-              <h2 class="animate-once animate-fade" style="font-size:25px; color:#fff;">Fast. Eco. Reliable. Loved by 1000+ Sydney Homes</h2>
-              <p class="lead animate-once" style="max-width:520px; margin-bottom:12px;">
-                Experience a faster, greener clean — end-of-lease, carpets, offices and more. Book online now and get your home sparkling.
-              </p>
+                <h1 class="" style="font-size:32px; margin-bottom:6px; font-weight: 500;">Professional Cleaning Services in Sydney — House, Office & End of Lease Cleaning</h1>
+
+                <h2 class="" style="position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border: 0;">Trusted & Affordable End of Lease Service At Your Finger Tips</h2>
+              
+                <p class="" style="font-size:19px; margin-bottom:6px; font-weight: 10;">FreshClean Sydney provides professional house cleaning, end-of-lease cleaning, and office cleaning across Sydney. Our trained cleaners deliver reliable, spotless results at affordable prices. Book your cleaning today for a fresh, hassle-free home or workspace</p>
+
+                <p class="" style="position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border: 0;">
+                Experience reliable, affordable, and professional cleaning services in Sydney with a team that truly cares about your home. We specialise in detailed house cleaning, end-of-lease cleaning, deep cleaning, and regular maintenance cleaning designed to keep your space spotless without any stress. Whether you need a once-off clean or ongoing weekly or fortnightly cleaning, our trained cleaners deliver high-quality results using safe products and a thorough cleaning checklist. Enjoy fast quotes, friendly customer support, and a service you can trust — so you can relax while we do the work.</p>
+
                <a class="btn btn-primary" href="./service.html">Explore Services</a>
                <!-- Compact collage: smaller footprint for quick glance -->
                <div class="windows-collage compact" aria-hidden="false">
@@ -810,8 +810,8 @@
                 <p><i class="fa fa-phone-alt"></i>0493 597 634</p>
                 <p><i class="fa fa-envelope"></i>freshcleansyd@gmail.com</p>
                 <div class="footer-social">
-                  <a href=""><i class="fab fa-facebook-f"></i></a>
-                  <a href=""><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=61584468710392" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/freshclean.sydney/#" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -871,6 +871,38 @@
       </div>
       <!-- Footer End -->
 
+      <!-- Modal markup for booking (remains in index.html) -->
+      <div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form id="bookNowForm">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bookNowModalLabel">Request a Booking — <span id="bn-service-text"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" id="bn-service" name="service" />
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" id="bn-email" name="email" placeholder="your@email.com" />
+                </div>
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="tel" class="form-control" id="bn-phone" name="phone" placeholder="+614xxxxxxxx" />
+                </div>
+                <p id="bn-response" style="margin-top:8px;"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="bn-submit" type="submit" class="btn btn-primary">Send Request</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     </div>
 
@@ -881,227 +913,118 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Consolidated app handlers: newsletter, book modal, quote form and animations -->
+    <script>
+    (function(){
+      const BOOK_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOcu8VqKWiMJIC7Fy8w6auAELgr05IJDRynljNVECmTB9MFvma9v--vg4IFs1pgKHXAg/exec';
+      // POST target that writes to the "FormData" sheet (landing page form)
+      const FORM_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-vDSwtzpEoIdSnLUV0lB2tT9NtvTUewYsK8yb-0raht94OE4NM1sSviOVSvUWgg-L/exec';
+      const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec';
+
+      function isValidEmail(email){ return /\S+@\S+\.\S+/.test(email); }
+      function isNonEmpty(s){ return s && s.trim().length>0; }
+
+      // Newsletter attach helper
+      function attachNewsletter(buttonId, inputId) {
+        const btn = document.getElementById(buttonId);
+        const input = document.getElementById(inputId);
+        if (!btn || !input) return;
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          const email = input.value.trim();
+          if (!email) { alert('Please enter your email.'); input.focus(); return; }
+          if (!isValidEmail(email)) { alert('Please enter a valid email address.'); input.focus(); return; }
+          btn.disabled = true; const orig = btn.textContent; btn.textContent = 'Sending...';
+          const fd = new FormData(); fd.append('email', email);
+          fetch(NEWSLETTER_SCRIPT_URL, { method:'POST', body: fd, mode: 'no-cors' })
+            .catch(()=>{})
+            .finally(()=> { try { new Image().src = NEWSLETTER_SCRIPT_URL + '?email=' + encodeURIComponent(email) + '&_=' + Date.now(); } catch(e){}; btn.textContent = 'Sent'; input.value=''; setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 1800); });
+        });
+      }
+      attachNewsletter('newsletter-email','newsletter-input');
+      attachNewsletter('footer-newsletter-email','footer-newsletter-input');
+
+      // Book Now modal handlers (open + submit)
+      document.querySelectorAll('.book-now').forEach(btn=>{
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          const service = btn.dataset.service || '';
+          document.getElementById('bn-service-text').innerText = service;
+          document.getElementById('bn-service').value = service;
+          document.getElementById('bn-email').value = '';
+          document.getElementById('bn-phone').value = '';
+          document.getElementById('bn-response').textContent = '';
+          $('#bookNowModal').modal('show');
+        });
+      });
+      const bookForm = document.getElementById('bookNowForm');
+      if (bookForm) {
+        bookForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          const resp = document.getElementById('bn-response');
+          const submitBtn = document.getElementById('bn-submit');
+          resp.textContent = '';
+          const email = document.getElementById('bn-email').value.trim();
+          const phone = document.getElementById('bn-phone').value.trim();
+          const service = document.getElementById('bn-service').value;
+          if (!isNonEmpty(email) && !isNonEmpty(phone)) { resp.style.color='red'; resp.textContent='Please provide email or phone.'; return; }
+          if (isNonEmpty(email) && !isValidEmail(email)) { resp.style.color='red'; resp.textContent='Please enter a valid email.'; return; }
+          submitBtn.disabled = true; const orig = submitBtn.textContent; submitBtn.textContent = 'Sending...';
+          const fd = new FormData(); fd.append('email', email); fd.append('phone', phone); fd.append('service', service);
+          fetch(BOOK_SCRIPT_URL, { method:'POST', body: fd, mode:'no-cors' })
+            .then(()=> { resp.style.color='green'; resp.textContent='✅ Request sent. We will contact you soon.'; setTimeout(()=>{ $('#bookNowModal').modal('hide'); }, 1000); })
+            .catch(()=> { resp.style.color='red'; resp.textContent='❌ Error sending request.'; })
+            .finally(()=> { submitBtn.disabled = false; submitBtn.textContent = orig; });
+        });
+      }
+
+      // Quote form (hero) submit handler — prevents navigation & shows loading
+      const quoteForm = document.getElementById('quoteForm');
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          const responseEl = document.getElementById('responseMessage');
+          const loadingEl = document.getElementById('loading');
+          responseEl.textContent = ''; loadingEl.style.display = 'block';
+          const fd = new FormData(quoteForm);
+          // send to formdata Apps Script (writes to "formdata" sheet)
+          fetch(FORM_SCRIPT_URL, { method:'POST', body: fd, mode: 'no-cors' })
+            .then(()=> {
+              responseEl.style.color = 'green';
+              responseEl.textContent = '✅ Quote request sent. We will contact you shortly.';
+              quoteForm.reset();
+            })
+            .catch(()=> {
+              responseEl.style.color = 'red';
+              responseEl.textContent = '❌ Error sending request. Please try again.';
+            })
+            .finally(()=> { loadingEl.style.display = 'none'; setTimeout(()=>{ responseEl.textContent=''; }, 6000); });
+        });
+      }
+
+      // One-time animation runner
+      (function(){
+        const FLAG = 'freshclean_animations_played_v1';
+        const elems = document.querySelectorAll('.animate-once');
+        if (localStorage.getItem(FLAG)) { elems.forEach(e => e.classList.add('play')); return; }
+        if ('IntersectionObserver' in window && elems.length) {
+          const obs = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('play');
+                observer.unobserve(entry.target);
+                const remaining = document.querySelectorAll('.animate-once:not(.play)');
+                if (remaining.length === 0) localStorage.setItem(FLAG, '1');
+              }
+            });
+          }, { threshold: 0.15 });
+          elems.forEach(e => obs.observe(e));
+        } else { elems.forEach(e => e.classList.add('play')); localStorage.setItem(FLAG, '1'); }
+      })();
+
+    })();
+    </script>
   </body>
-<script>
-const form = document.getElementById("quoteForm");
-const loading = document.getElementById("loading");
-const responseMessage = document.getElementById("responseMessage");
-
-// TODO: Replace the value below with YOUR deployed Apps Script web app URL
-// Example: https://script.google.com/macros/s/AKfycbx.../exec
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-vDSwtzpEoIdSnLUV0lB2tT9NtvTUewYsK8yb-0raht94OE4NM1sSviOVSvUWgg-L/exec';
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    loading.style.display = "block";
-    const button = form.querySelector("button[type='submit']");
-    button.disabled = true;
-    responseMessage.innerHTML = "";
-
-    const formData = new FormData(form);
-
-    fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"  // keep no-cors unless you've configured CORS on the Apps Script (deploy + allow)
-    }).then(() => {
-        loading.style.display = "none";
-        button.disabled = false;
-        responseMessage.innerHTML = "✅ Thank you! Your request has been submitted.";
-        form.reset();
-    }).catch(() => {
-        loading.style.display = "none";
-        button.disabled = false;
-        responseMessage.innerHTML = "❌ Error submitting the form.";
-    });
-});
-</script>
-
-<script>
-// filepath: /home/nirvan/Desktop/Code/freshclean/index.html
-// Newsletter subscription handler
-
-const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxADRRy5vXg9oXXR17a2tmLGbhNq0GFrlE8jRIhYGGz88_hmk-bJeGwk9MKADczBuILVg/exec';
-
-function isValidEmail(email) {
-  return /\S+@\S+\.\S+/.test(email);
-}
-
-function attachNewsletter(buttonId, inputId) {
-  const btn = document.getElementById(buttonId);
-  const input = document.getElementById(inputId);
-  if (!btn || !input) return;
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const email = input.value.trim();
-    if (!email) { alert('Please enter your email.'); input.focus(); return; }
-    if (!isValidEmail(email)) { alert('Please enter a valid email address.'); input.focus(); return; }
-
-    btn.disabled = true;
-    const origText = btn.textContent;
-    btn.textContent = 'Sending...';
-
-    const data = new FormData();
-    data.append('email', email);
-
-    fetch(NEWSLETTER_SCRIPT_URL, {
-      method: 'POST',
-      body: data,
-      mode: 'no-cors' // Apps Script often requires no-cors for simple deployments
-    }).then(() => {
-      btn.textContent = 'Sent';
-      input.value = '';
-      setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
-    }).catch(() => {
-      btn.textContent = origText;
-      btn.disabled = false;
-      alert('Error sending subscription. Please try again.');
-    });
-  });
-}
-
-// attach to both newsletter buttons
-attachNewsletter('newsletter-email', 'newsletter-input');
-attachNewsletter('footer-newsletter-email', 'footer-newsletter-input');
-</script>
-
-<!-- Add modal markup (place once near the end of body) -->
-<!-- filepath: /home/nirvan/Desktop/Code/freshclean/index.html -->
-<div class="modal fade" id="bookNowModal" tabindex="-1" role="dialog" aria-labelledby="bookNowModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form id="bookNowForm">
-        <div class="modal-header">
-          <h5 class="modal-title" id="bookNowModalLabel">Request a Booking — <span id="bn-service-text"></span></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" id="bn-service" name="service" />
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" id="bn-email" name="email" placeholder="your@email.com" />
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" class="form-control" id="bn-phone" name="phone" placeholder="+614xxxxxxxx" />
-          </div>
-          <p id="bn-response" style="margin-top:8px;"></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button id="bn-submit" type="submit" class="btn btn-primary">Send Request</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Append script (near other scripts) -->
-<script>
-  // filepath: /home/nirvan/Desktop/Code/freshclean/index.html
-  (function(){
-    const BOOK_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOcu8VqKWiMJIC7Fy8w6auAELgr05IJDRynljNVECmTB9MFvma9v--vg4IFs1pgKHXAg/exec';
-    function isValidEmail(e){ return /\S+@\S+\.\S+/.test(e); }
-    function isNonEmpty(s){ return s && s.trim().length>0; }
-
-    // open modal when Book Now clicked
-    document.querySelectorAll('.book-now').forEach(btn=>{
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        const service = btn.dataset.service || '';
-        document.getElementById('bn-service-text').innerText = service;
-        document.getElementById('bn-service').value = service;
-        document.getElementById('bn-email').value = '';
-        document.getElementById('bn-phone').value = '';
-        document.getElementById('bn-response').textContent = '';
-        $('#bookNowModal').modal('show');
-      });
-    });
-
-    // form submit
-    const form = document.getElementById('bookNowForm');
-    const submitBtn = document.getElementById('bn-submit');
-    const resp = document.getElementById('bn-response');
-    if (form) {
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        resp.textContent = '';
-        const email = document.getElementById('bn-email').value.trim();
-        const phone = document.getElementById('bn-phone').value.trim();
-        const service = document.getElementById('bn-service').value;
-        if (!isNonEmpty(email) && !isNonEmpty(phone)) {
-          resp.style.color = 'red';
-          resp.textContent = 'Please provide email or phone so we can contact you.';
-          return;
-        }
-        if (isNonEmpty(email) && !isValidEmail(email)) {
-          resp.style.color = 'red';
-          resp.textContent = 'Please enter a valid email.';
-          return;
-        }
-        submitBtn.disabled = true;
-        const orig = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-
-        const fd = new FormData();
-        fd.append('email', email);
-        fd.append('phone', phone);
-        fd.append('service', service);
-
-        fetch(BOOK_SCRIPT_URL, { method: 'POST', body: fd, mode: 'no-cors' })
-          .then(()=> {
-            resp.style.color = 'green';
-            resp.textContent = '✅ Request sent. We will contact you soon.';
-            // close after short delay
-            setTimeout(()=> { $('#bookNowModal').modal('hide'); }, 1200);
-          })
-          .catch(()=> {
-            resp.style.color = 'red';
-            resp.textContent = '❌ Error sending request. Please try again.';
-          })
-          .finally(()=> {
-            submitBtn.disabled = false;
-            submitBtn.textContent = orig;
-          });
-      });
-    }
-  })();
-</script>
-
-
-<!-- One-time animation runner: triggers .play on .animate-once elements when they first enter viewport.  -->
-<script>
-(function(){
-  const FLAG = 'freshclean_animations_played_v1';
-  const elems = document.querySelectorAll('.animate-once');
-  if (localStorage.getItem(FLAG)) {
-    elems.forEach(e => e.classList.add('play'));
-    return;
-  }
-  if ('IntersectionObserver' in window && elems.length) {
-    const obs = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('play');
-          observer.unobserve(entry.target);
-          // if no more unseen elements, set flag so animations don't replay
-          const remaining = document.querySelectorAll('.animate-once:not(.play)');
-          if (remaining.length === 0) localStorage.setItem(FLAG, '1');
-        }
-      });
-    }, { threshold: 0.15 });
-    elems.forEach(e => obs.observe(e));
-  } else {
-    elems.forEach(e => e.classList.add('play'));
-    localStorage.setItem(FLAG, '1');
-  }
-})();
-</script>
-
 </html>
